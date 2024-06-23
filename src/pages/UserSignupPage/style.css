@@ -1,0 +1,13 @@
+.form-container {
+    padding: 100px;
+    background-color: #f8f9fa; /* Cor de fundo da div */
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar um efeito de elevação */
+  }
+  
+  .form-input {
+    width: 500px; /* Torna os campos de entrada mais largos */
+    max-width: 1000px; /* Define um limite máximo para a largura */
+  }
+
+  
