@@ -5,53 +5,39 @@ import axios from 'axios';
 import logo from '../../assets/4clutch-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-export function UserSignupPage() {
+export function LoginPage() {
 
     const [formData, setFormData] = useState({
         username: "",
-        email: "",
         password: "",
     });
-
-    const [errors, setErrors] = useState({
-        username: "",
-        email: "",
-        password: "",
-    });
-
-    const navigate = useNavigate();
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
-        setErrors((prev) => ({ ...prev, [name]: "" })); // Limpa o erro do campo específico ao editar
     };
+
+    const navigate = useNavigate();
 
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const user = {
             username: formData.username,
-            email: formData.email,
             password: formData.password,
         };
 
         try {
-            const response = await axios.post('http://localhost:8025/users', user);
-            console.log("Usuário cadastrado com sucesso! - " + response.data.message);
-            //redireciona o usuario para a pagina de login
-            navigate("/login");
-            setFormData({ username: "", email: "", password: "" });
-            setErrors({ username: "", email: "", password: "" });
+            const response = await axios.post('http://localhost:8025/login', user);
+            console.log("Login efetuado com sucesso - " + response.data.message);
+            navigate("/");
+            
+            setFormData({ username: "", password: "" });
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.validationErrors) {
-                const validationErrors = error.response.data.validationErrors;
-                setErrors((prev) => ({
-                    ...prev,
-                    ...validationErrors
-                }));
+            if (error.response) {
+                console.log("Falha ao autenticar usuario: ", error.response.data.message);
             } else {
-                console.log("Falha ao cadastrar usuário - " + error.message);
+                console.log("Erro ao fazer login: ", error.message);
             }
         }
     };
@@ -62,8 +48,8 @@ export function UserSignupPage() {
                 <Col>
                     <div className="form-container mx-auto" style={{ maxWidth: '500px' }}>
                         <div className="d-flex justify-content-center align-items-center mb-3">
-                        <h1 className="" style={{ margin: 0 }}>Cadastro</h1>
-                        <img src={logo} alt="Logo" style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+                            <h1 className="" style={{ margin: 0 }}>Login</h1>
+                            <img src={logo} alt="Logo" style={{ width: '100px', height: '100px', marginRight: '10px' }} />
                         </div>
                         <Form onSubmit={onSubmit}>
                             <Form.Group controlId="formNomeUsuario">
@@ -72,26 +58,11 @@ export function UserSignupPage() {
                                     type="text"
                                     id="username"
                                     name="username"
-                                    className={"form-input" + (errors.username ? " is-invalid" : "")}
+                                    className={"form-input"}
                                     onChange={onChange}
                                     value={formData.username}
                                     required
                                 />
-                                {errors.username && <div className="invalid-feedback">{errors.username}</div>}
-                            </Form.Group>
-
-                            <Form.Group controlId="formEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    className={"form-input" + (errors.email ? " is-invalid" : "")}
-                                    onChange={onChange}
-                                    value={formData.email}
-                                    required
-                                />
-                                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                             </Form.Group>
 
                             <Form.Group controlId="formSenha">
@@ -100,21 +71,20 @@ export function UserSignupPage() {
                                     type="password"
                                     id="password"
                                     name="password"
-                                    className={"form-input" + (errors.password ? " is-invalid" : "")}
+                                    className={"form-input"}
                                     onChange={onChange}
                                     value={formData.password}
                                     required
                                 />
-                                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                             </Form.Group>
 
                             <Button variant="primary" type="submit" className="w-100 mt-3 form-button">
-                                Cadastrar
+                                Entrar
                             </Button>
                         </Form>
 
                         <div className='text-center'>
-                            <Link to= "/login">Fazer Login</Link>
+                            <Link to= "/signup">Cadastrar-se</Link>
                         </div>
                     </div>
                 </Col>
