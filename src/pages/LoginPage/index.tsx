@@ -1,10 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Spinner} from 'react-bootstrap';
 import './style.css';
-import axios from 'axios';
 import logo from '../../assets/4clutch-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
+import AuthService from '../../services/AuthService';
+import { IUserLogin
+    
+ } from '../../commons/interface';
 export function LoginPage() {
 
     const [formData, setFormData] = useState({
@@ -19,27 +22,36 @@ export function LoginPage() {
 
     const navigate = useNavigate();
 
+    const [pendingApiCall, setPendingApiCall] = useState(false);
+
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        setPendingApiCall(true);
         event.preventDefault();
 
-        const user = {
+        const user:IUserLogin = {
             username: formData.username,
             password: formData.password,
         };
 
-        try {
-            const response = await axios.post('http://localhost:8025/login', user);
-            console.log("Login efetuado com sucesso - " + response.data.message);
-            navigate("/");
-            
-            setFormData({ username: "", password: "" });
-        } catch (error) {
-            if (error.response) {
-                console.log("Falha ao autenticar usuario: ", error.response.data.message);
-            } else {
-                console.log("Erro ao fazer login: ", error.message);
-            }
+        const response = await AuthService.login(user);
+
+        if(response.status === 200 || response.status === 201){
+            Swal.fire({
+                title:"Sucesso",
+                text:"Login realizado!",
+                icon: "success"
+            });
+            setTimeout(() => navigate("/"), 1500);
         }
+        else{
+            Swal.fire({
+                title:"Falha",
+                text:"Credenciais inválidas!",
+                icon: "error"
+            });
+        }
+
+        setPendingApiCall(false);
     };
 
     return (
@@ -78,8 +90,8 @@ export function LoginPage() {
                                 />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" className="w-100 mt-3 form-button">
-                                Entrar
+                            <Button variant="primary" type="submit" className="w-100 mt-3 form-button" disabled={pendingApiCall}>
+                                {pendingApiCall ? <Spinner animation="border" size="sm" /> : 'Entrar'}
                             </Button>
                         </Form>
 

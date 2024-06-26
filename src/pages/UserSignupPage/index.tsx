@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Spinner } from 'react-bootstrap';
 import './style.css';
-import axios from 'axios';
 import logo from '../../assets/4clutch-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import AuthService from '../../services/AuthService';
+import { IUserSignup } from '../../commons/interface';
 
 export function UserSignupPage() {
 
@@ -21,39 +23,43 @@ export function UserSignupPage() {
 
     const navigate = useNavigate();
 
+    const [pendingApiCall, setPendingApiCall] = useState(false);
+
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
         setErrors((prev) => ({ ...prev, [name]: "" })); // Limpa o erro do campo específico ao editar
     };
 
+    
+
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        setPendingApiCall(true);
         event.preventDefault();
 
-        const user = {
+        const user:IUserSignup= {
             username: formData.username,
             email: formData.email,
             password: formData.password,
         };
 
-        try {
-            const response = await axios.post('http://localhost:8025/users', user);
-            console.log("Usuário cadastrado com sucesso! - " + response.data.message);
-            //redireciona o usuario para a pagina de login
-            navigate("/login");
-            setFormData({ username: "", email: "", password: "" });
-            setErrors({ username: "", email: "", password: "" });
-        } catch (error) {
-            if (error.response && error.response.data && error.response.data.validationErrors) {
-                const validationErrors = error.response.data.validationErrors;
-                setErrors((prev) => ({
-                    ...prev,
-                    ...validationErrors
-                }));
-            } else {
-                console.log("Falha ao cadastrar usuário - " + error.message);
+        const response = await AuthService.signup(user);
+
+            if(response.status === 200 || response.status === 201){
+                Swal.fire({
+                    title:"Sucesso",
+                    text:"Cadastro realizado!",
+                    icon: "success"
+                });
+                //redireciona o usuario para a pagina de login em 1.5s
+                setTimeout(() => navigate("/login"), 1500);
             }
-        }
+            else{
+                if(response.data.validationErrors){
+                    setErrors(response.data.validationErrors);
+                }
+            }
+        setPendingApiCall(false);  
     };
 
     return (
@@ -108,8 +114,8 @@ export function UserSignupPage() {
                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" className="w-100 mt-3 form-button">
-                                Cadastrar
+                            <Button variant="primary" type="submit" className="w-100 mt-3 form-button" disabled={pendingApiCall}>
+                                {pendingApiCall ? <Spinner animation="border" size="sm" /> : 'Cadastrar'}
                             </Button>
                         </Form>
 
