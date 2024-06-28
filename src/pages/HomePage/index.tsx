@@ -1,11 +1,13 @@
-export function HomePage(){
+import { Carousel } from "react-bootstrap"
+import banner from "../../assets/banner2.png";
+import HomeCarousel from "../../components/HomeCarousel";
+
+export function HomePage() {
     return (
         <>
-            <main className="container">
-                <div className="text-center">
-                    <h1 className="h3 mb-3 fw-normal">Bem vindo ao Portal</h1>
-                </div>
-            </main>
+            return (
+                <HomeCarousel/>
+            );
         </>
     )
 }
