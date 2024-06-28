@@ -13,7 +13,6 @@ export function BaseRoutes() {
 
                 <Route path="/signup" element = {<UserSignupPage/>}/>
                 <Route path="/login" element = {<LoginPage/>}/>
-                <Route path="/teste" element = {<Navbar/>}/>
                 {/*Rotas privadas: */}
                 <Route element = {<AuthenticatedRoutes/>}>
                     <Route path = "/" element = {<HomePage/>}/>

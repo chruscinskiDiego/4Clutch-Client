@@ -1,5 +1,6 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import AuthService from "../../services/AuthService"
+import { Navbar } from "../../components/Navbar";
 
 export function AuthenticatedRoutes() {
 
@@ -9,7 +10,7 @@ export function AuthenticatedRoutes() {
     return(
         isAuthenticated ? (
         <>
-
+            <Navbar/>
             {/* Coringa para exibir o elemento na BaseRoutes*/}
             <Outlet/>
         

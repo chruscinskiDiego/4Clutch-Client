@@ -1,8 +1,18 @@
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10%;
-    background: rgb(67, 149, 182);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.navbar, .navbar a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+
+  .logo-img {
+    margin-left: 1rem;
+  }
+
+  .right-icons {
+    margin-left: 150px;
+  }
+
+  .nav-icon {
+    margin-left: 1rem; 
+  }
