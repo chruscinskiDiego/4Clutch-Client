@@ -3,7 +3,8 @@ import { UserSignupPage } from "../../pages/UserSignupPage";
 import { LoginPage } from "../../pages/LoginPage";
 import { HomePage } from "../../pages/HomePage";
 import { AuthenticatedRoutes } from "../AuthenticatedRoutes";
-import { Navbar } from "../../components/Navbar";
+import { CategoryListPage } from "../../pages/CategoryListPage";
+import ProductListPage from "../../pages/ProductListPage";
 
 export function BaseRoutes() {
     return(
@@ -15,6 +16,8 @@ export function BaseRoutes() {
                 <Route path="/login" element = {<LoginPage/>}/>
                 {/*Rotas privadas: */}
                 <Route element = {<AuthenticatedRoutes/>}>
+                    <Route path="/products" element = {<ProductListPage/>}/>
+                    <Route path = "/categories" element = {<CategoryListPage/>}/>
                     <Route path = "/" element = {<HomePage/>}/>
                     <Route path = "/home" element = {<HomePage/>}/>
                 </Route>
