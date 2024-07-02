@@ -4,7 +4,14 @@ import { LoginPage } from "../../pages/LoginPage";
 import { HomePage } from "../../pages/HomePage";
 import { AuthenticatedRoutes } from "../AuthenticatedRoutes";
 import { CategoryListPage } from "../../pages/CategoryListPage";
-import ProductListPage from "../../pages/ProductListPage";
+import PistolPage from "../../pages/PistolPage";
+import SubPage from "../../pages/SubPage";
+import ShotgunPage from "../../pages/ShotgunPage";
+import MachineGunPage from "../../pages/MachineGunPage";
+import RiflePage from "../../pages/RiflePage";
+import SniperPage from "../../pages/SniperPage";
+import GlovePage from "../../pages/KnifePage";
+import KnifePage from "../../pages/KnifePage";
 
 export function BaseRoutes() {
     return(
@@ -16,7 +23,13 @@ export function BaseRoutes() {
                 <Route path="/login" element = {<LoginPage/>}/>
                 {/*Rotas privadas: */}
                 <Route element = {<AuthenticatedRoutes/>}>
-                    <Route path="/products" element = {<ProductListPage/>}/>
+                    <Route path="/produtos/pistolas" element = {<PistolPage/>}/>                    
+                    <Route path="/produtos/submetralhadoras" element = {<SubPage/>}/>                    
+                    <Route path="/produtos/espingardas" element = {<ShotgunPage/>}/>                    
+                    <Route path="/produtos/metralhadoras" element = {<MachineGunPage/>}/>                    
+                    <Route path="/produtos/rifles" element = {<RiflePage/>}/>                    
+                    <Route path="/produtos/snipers" element = {<SniperPage/>}/>                    
+                    <Route path="/produtos/facas" element = {<KnifePage/>}/>                                                       
                     <Route path = "/categories" element = {<CategoryListPage/>}/>
                     <Route path = "/" element = {<HomePage/>}/>
                     <Route path = "/home" element = {<HomePage/>}/>

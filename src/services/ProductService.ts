@@ -3,10 +3,10 @@ import { api } from "../lib/axios";
 
 const PRODUCTS_URL = "/products";
 
-const findAll = async (): Promise<any> => {
+const findAll = async (categoryId:string): Promise<any> => {
   let response;
   try {
-    response = await api.get(`${PRODUCTS_URL}`);
+    response = await api.get(`${PRODUCTS_URL}/find-by-category/${categoryId}`);
   } catch (error: any) {
     response = error.response;
   }

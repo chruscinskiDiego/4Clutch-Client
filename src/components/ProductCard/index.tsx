@@ -1,5 +1,4 @@
-import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Container } from 'react-bootstrap';
 import { ICategory } from '../../commons/interface';
 import './style.css';
 
@@ -13,12 +12,12 @@ interface IProductCardProps {
 
 const ProductCard = ({ name, imageUrl, category, price, onViewClick }: IProductCardProps) => (
   <Card style={{ width: '18rem' }} className='card-style'>
+    <Card.Subtitle className="mb-2 text-muted card-category">{category.name}</Card.Subtitle>
     <Card.Img variant="top" src={imageUrl} />
-    <Card.Body>
+    <Card.Body className='card-body'>
       <Card.Title className='card-title'>{name}</Card.Title>
-      <Card.Subtitle className="mb-2 text-muted">{category.name}</Card.Subtitle>
-      <Card.Text>{price.toFixed(2)}</Card.Text>
-      <Button className='card-button' onClick={onViewClick}>Visualizar</Button> {/* Use the prop */}
+      <Card.Text>R$ {price.toFixed(2)}</Card.Text>
+      <Button className='card-button' onClick={onViewClick}>Visualizar</Button>
     </Card.Body>
   </Card>
 );

@@ -30,13 +30,13 @@ export function Navbar() {
           </Col>
           <Col xs={8} className="text-center">
             <Nav className="justify-content-center mt-1">
-              <Nav.Link as={Link} to="/categories">Pistolas</Nav.Link>
-              <Nav.Link as={Link} to="/products">Submetralhadoras</Nav.Link>
-              <Nav.Link as={Link} to="/">Espingardas</Nav.Link>
-              <Nav.Link as={Link} to="/">Metralhadoras</Nav.Link>
-              <Nav.Link as={Link} to="/">Rifles</Nav.Link>
-              <Nav.Link as={Link} to="/">Snipers</Nav.Link>
-              <Nav.Link as={Link} to="/">Luvas</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/pistolas">Pistolas</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/submetralhadoras">Submetralhadoras</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/espingardas">Espingardas</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/metralhadoras">Metralhadoras</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/rifles">Rifles</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/snipers">Snipers</Nav.Link>
+              <Nav.Link as={Link} to="/produtos/facas">Facas</Nav.Link>
             </Nav>
           </Col>
           <Col xs={2} className="d-flex justify-content-end"> {/* Alinhamento à direita */}

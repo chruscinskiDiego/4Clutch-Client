@@ -2,24 +2,28 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { IProduct } from "../../commons/interface";
 import ProductService from "../../services/ProductService";
-import ProductCard from "../../components/ProductCard";
-import ProductModal from "../../components/ProductModal";
+import ProductCard from "../ProductCard";
+import ProductModal from "../ProductModal";
 import './style.css';
 
-const ProductListPage = () => {
+interface ProductListPageProps {
+  categoryId: string;
+}
+
+const ProductListPage: React.FC<ProductListPageProps> = ({ categoryId }) => {
   const [data, setData] = useState<IProduct[]>([]);
   const [status, setStatus] = useState({ loading: false, error: "" });
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    loadData(categoryId); // Passa o categoryId para a função loadData
+  }, [categoryId]); // Dependência categoryId para reexecutar o useEffect quando categoryId mudar
 
-  const loadData = async () => {
+  const loadData = async (categoryId: string) => {
     setStatus({ loading: true, error: "" });
     try {
-      const response = await ProductService.findAll();
+      const response = await ProductService.findAll(categoryId);
       if (response.status === 200) {
         setData(response.data);
         setStatus({ loading: false, error: "" });
@@ -31,6 +35,7 @@ const ProductListPage = () => {
     }
   };
 
+
   const handleViewClick = (product: IProduct) => {
     setSelectedProduct(product);
     setShowModal(true);
@@ -39,7 +44,7 @@ const ProductListPage = () => {
   return (
     <Container style={{ paddingTop: '70px' }}>
       <div className="text-center">
-        <h1 className="mb-3">Lista de Produtos</h1>
+        <h1 className="mb-3 mt-4">Lista de Produtos</h1>
       </div>
       {status.loading ? (
         <div className="d-flex justify-content-center">

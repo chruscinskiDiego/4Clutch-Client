@@ -8,11 +8,14 @@
 
 @keyframes color-change {
     0% { color: rgb(255, 255, 255); }
-    50% { color: rgb(164, 164, 190); }
+    50% { color: rgb(211, 211, 211); }
     100% { color: rgb(255, 255, 255); }
 }
 
-
+.card-body{
+    background-color: rgba(255, 255, 255, 0.11);
+    border-radius: 10px;
+}
 .card-title{
     animation: color-change 3s infinite;
 }
@@ -28,4 +31,14 @@
     transform: scale(1.1);
     background-color: white;
     color: #077ad1;
+}
+
+.card-category {
+    color: white;
+    margin-top: 2px;
+    background-color: rgba(255, 255, 255, 0.11);
+    
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
 }
