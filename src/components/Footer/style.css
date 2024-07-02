@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.footer, .footer a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #000;
+  text-decoration: none;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.footer h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer p, .footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.logo-img {
+  margin-bottom: 0.5rem; /* Ajusta o espaçamento entre a logo e o texto */
+}
