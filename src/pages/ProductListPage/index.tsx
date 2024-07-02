@@ -43,7 +43,6 @@ const ProductListPage = () => {
             <Col key={product.id} xs={12} md={4} className="card">
               <ProductCard
                 name={product.name}
-                description={product.description}
                 imageUrl={product.imageUrl}
                 category={product.categoryId}
                 price={product.price}

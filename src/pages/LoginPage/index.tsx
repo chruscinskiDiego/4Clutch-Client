@@ -5,9 +5,8 @@ import logo from '../../assets/4clutch-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import AuthService from '../../services/AuthService';
-import { IUserLogin
-    
- } from '../../commons/interface';
+import { IUserLogin} from '../../commons/interface';
+
 export function LoginPage() {
 
     const [formData, setFormData] = useState({

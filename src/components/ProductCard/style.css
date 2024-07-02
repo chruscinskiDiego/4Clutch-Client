@@ -1,0 +1,23 @@
+.card-style{
+    background: linear-gradient(to right, #077ad1, #00bfff); /* Degrade de azul */
+    box-shadow: 5px 5px 5px 0px rgba(219, 217, 217, 0.75);
+    border-radius: 5px;
+    border: 0px;
+}
+
+
+@keyframes color-change {
+    0% { color: rgb(255, 255, 255); }
+    50% { color: rgb(164, 164, 190); }
+    100% { color: rgb(255, 255, 255); }
+}
+
+
+.card-title{
+    animation: color-change 3s infinite;
+}
+
+.card-button{
+    background-color: black;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.147);
+}
