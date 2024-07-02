@@ -3,11 +3,14 @@ import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { IProduct } from "../../commons/interface";
 import ProductService from "../../services/ProductService";
 import ProductCard from "../../components/ProductCard";
+import ProductModal from "../../components/ProductModal";
 import './style.css';
 
 const ProductListPage = () => {
   const [data, setData] = useState<IProduct[]>([]);
   const [status, setStatus] = useState({ loading: false, error: "" });
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
   useEffect(() => {
     loadData();
@@ -28,6 +31,11 @@ const ProductListPage = () => {
     }
   };
 
+  const handleViewClick = (product: IProduct) => {
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
+
   return (
     <Container style={{ paddingTop: '70px' }}>
       <div className="text-center">
@@ -46,12 +54,18 @@ const ProductListPage = () => {
                 imageUrl={product.imageUrl}
                 category={product.categoryId}
                 price={product.price}
+                onViewClick={() => handleViewClick(product)} // Pass the click handler
               />
             </Col>
           ))}
         </Row>
       )}
       {status.error && <Alert variant="danger" className="mt-3">{status.error}</Alert>}
+      <ProductModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        product={selectedProduct}
+      />
     </Container>
   );
 };

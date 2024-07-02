@@ -20,4 +20,12 @@
 .card-button{
     background-color: black;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.147);
+    transition: transform 0.3s ease;
+}
+
+
+.card-button:hover {
+    transform: scale(1.1);
+    background-color: white;
+    color: #077ad1;
 }
