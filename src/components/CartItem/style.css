@@ -14,3 +14,17 @@
     background-color: black;
     transform: scale(1.1);
 }
+
+.quantity-button{
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(184, 184, 184, 0.089);
+    border: none;
+}
+
+.quantity-button:hover{
+    font-weight: bold;
+    border: none;
+    background-color: black;
+    transform: scale(1.1);
+}

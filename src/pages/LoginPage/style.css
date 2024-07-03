@@ -27,4 +27,9 @@ body {
 
   .form-button{
     background-color: black;
+    transition: transform 0.3s ease;
+  }
+
+  .form-button:hover{
+    transform: (1.1);
   }

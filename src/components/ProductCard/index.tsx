@@ -1,13 +1,14 @@
-import { Button, Card, Container } from 'react-bootstrap';
-import { ICategory } from '../../commons/interface';
+import { Button, Card } from 'react-bootstrap';
+import { ICategory, IExterior, IModel } from '../../commons/interface';
 import './style.css';
 
 interface IProductCardProps {
   name: string;
   imageUrl: string;
   category: ICategory;
+  model: IModel;
   price: number;
-  onViewClick: () => void; // Add the new prop
+  onViewClick: () => void; 
 }
 
 const ProductCard = ({ name, imageUrl, category, price, onViewClick }: IProductCardProps) => (

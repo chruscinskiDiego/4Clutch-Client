@@ -14,6 +14,16 @@ export interface ICategory{
     name:string;
 }
 
+export interface IModel {
+    id?:number;
+    name:string;
+}
+
+export interface IExterior{
+    id?:number;
+    name:string;
+}
+
 export interface IProduct {
     id?: number;
     name: string;
@@ -21,4 +31,6 @@ export interface IProduct {
     price: number;
     description: string;
     category: ICategory;
+    model: IModel;
+    exterior: IExterior;
   }

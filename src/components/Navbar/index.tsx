@@ -3,8 +3,9 @@ import { Navbar as BootstrapNavbar, Nav, Container, Row, Col } from 'react-boots
 import { Link, useLocation } from 'react-router-dom';
 import logo from "../../assets/4clutch-logo.png";
 import AuthService from '../../services/AuthService';
-import { FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
+import { FaShoppingCart, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import './style.css';
+import Swal from 'sweetalert2';
 
 export function Navbar() {
   const location = useLocation();
@@ -15,8 +16,13 @@ export function Navbar() {
   };
 
   const onClickLogout = () => {
+    Swal.fire({
+      title: "Sucesso",
+      text: "Logout realizado!",
+      icon: "success"
+    });
     AuthService.logout();
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 1500);
   };
 
   return (
@@ -99,9 +105,15 @@ export function Navbar() {
               <Nav.Link as={Link} to="/carrinho" className="nav-icon">
                 <FaShoppingCart />
               </Nav.Link>
-              <Nav.Link href="#logout" onClick={onClickLogout} className="nav-icon">
-                <FaSignOutAlt />
-              </Nav.Link>
+              {AuthService.isAuthenticated() ? (
+                <Nav.Link as={Link} to="/home" onClick={onClickLogout} className="nav-icon">
+                  <FaSignOutAlt />
+                </Nav.Link>
+              ) : (
+                <Nav.Link as = {Link} to="/login"className="nav-icon">
+                  <FaUser />
+                </Nav.Link>
+              )}
             </Nav>
           </Col>
         </Row>

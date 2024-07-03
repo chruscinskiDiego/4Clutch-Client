@@ -1,9 +1,55 @@
-.custom-modal{
-    width: 110%; /* Ajuste a largura conforme necessário */
-  }
-  
-  .product-image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-  }
+.custom-modal {
+  border: none;
+}
+
+.custom-modal-header {
+  background: linear-gradient(to right, #077ad1, #00bfff);
+  color: #fff;
+}
+
+.custom-modal-footer {
+  background: linear-gradient(to right, #077ad1, #00bfff);
+  border-top: none;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.close-button{
+  background-color: white;
+  color: black;
+  transition: transform 0.3s ease;
+  border: none;
+  margin-right: 1rem;
+}
+
+
+.close-button:hover{
+  color: black;
+  background-color: white;
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+.add-cart-button{
+  background-color: black;
+  transition: transform 0.3s ease;
+  border: none;
+}
+
+.add-cart-button:hover{
+  transition: transform 0.3s ease;
+  background-color: black;
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+.price{
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  width: 30%;
+}

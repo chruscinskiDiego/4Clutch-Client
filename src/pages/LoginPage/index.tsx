@@ -89,7 +89,7 @@ export function LoginPage() {
                                 />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" className="w-100 mt-3 form-button" disabled={pendingApiCall}>
+                            <Button type="submit" className="w-100 mt-3 form-button" disabled={pendingApiCall}>
                                 {pendingApiCall ? <Spinner animation="border" size="sm" /> : 'Entrar'}
                             </Button>
                         </Form>

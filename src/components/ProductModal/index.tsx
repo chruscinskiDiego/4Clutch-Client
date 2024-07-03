@@ -1,5 +1,6 @@
 import { Modal, Button } from 'react-bootstrap';
 import { IProduct } from '../../commons/interface';
+import './style.css'
 
 interface IProductModalProps {
   show: boolean;
@@ -18,20 +19,20 @@ const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
 
   return (
     <Modal show={show} onHide={onHide} centered className="custom-modal">
-      <Modal.Header closeButton>
-        <Modal.Title>{product.name}</Modal.Title>
+      <Modal.Header closeButton className="custom-modal-header">
+        <Modal.Title>{product.modelId.name} | {product.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img src={product.imageUrl} alt={product.name} className='product-image' />
-        <h5>Categoria: {product.categoryId.name}</h5>
-        <p>Preço: {product.price.toFixed(2)}</p>
+        <h5>Exterior: {product.exteriorId.name}</h5>
+        <p className='price'>R$ {product.price.toFixed(2)}</p>
         <p>Descrição: {product.description}</p>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={onHide}>
+      <Modal.Footer className="custom-modal-footer">
+        <Button onClick={onHide} className='close-button'>
           Fechar
         </Button>
-        <Button variant="primary" onClick={() => { addToCart(product); onHide(); }}>
+        <Button onClick={() => { addToCart(product); onHide(); }} className='add-cart-button'>
           Adicionar ao Carrinho
         </Button>
       </Modal.Footer>
