@@ -16,3 +16,30 @@
   .nav-icon {
     margin-left: 1rem; 
   }
+  
+  .custom-nav {
+    background-color: #f8f9fa; /* Cor de fundo personalizada */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .custom-nav-link {
+    color: #343a40; /* Cor do texto personalizada */
+    margin: 0 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .custom-nav-link:hover {
+    background-color: #343a40; /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+  }
+  
+  .custom-nav-link.active {
+    font-weight: bold; /* Deixa o link ativo em negrito */
+    background-color: #2f94f8; /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+  }
+  

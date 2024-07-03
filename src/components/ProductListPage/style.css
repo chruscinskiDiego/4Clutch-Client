@@ -11,3 +11,31 @@
     padding: 15px;
     border: none;
 }
+
+.page-button {
+
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: #2f94f8;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+
+}
+
+.page-button:hover {
+
+  transform: scale(1.1);
+  background-color: #2f94f8;;
+
+}
+
+.page-button:disabled {
+
+  border: none;
+  color: white;
+  background-color:#2f94f8;;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+
+}
