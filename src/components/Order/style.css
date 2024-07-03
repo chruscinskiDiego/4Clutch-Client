@@ -1,0 +1,57 @@
+.order-page{
+    background-color: #f8f9fa;
+    justify-content: center;
+    margin-top: 5rem;
+    padding-top: 2rem;
+}
+
+.order-title{
+    margin-top: 2rem;
+}
+
+.order-products{
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.order-user{
+    background: linear-gradient(to right, #077ad1, #00bfff);
+    border-radius: 5px;
+}
+.confirm-button{
+    margin-top: 1rem;
+    background-color: black;
+    border: none;
+    transition: transform 0.3s ease;
+    
+}
+
+.confirm-button:hover{
+
+    transform: scale(1.1);
+    font-weight: bold;
+    background-color: black;
+    border: none;
+}
+
+.form-item{
+    background-color: white;
+    border: none;
+    border-radius: 0;
+}
+
+.form-item:focus{
+    background-color: black;
+}
+.form-select {
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+  }
+  
+  .form-select:focus {
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }

@@ -18,3 +18,14 @@
 .item-name {
     font-weight: bold;
 }
+
+.confirm-button{
+    margin-top: 1rem;
+    background-color: black;
+    border: none;
+}
+
+.confirm-button:hover{
+    margin-top: 1rem;
+    background-color: black;
+}

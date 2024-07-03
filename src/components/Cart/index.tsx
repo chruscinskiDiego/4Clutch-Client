@@ -46,7 +46,7 @@ function Cart() {
   };
 
   return (
-    <Container>
+    <Container className='cart-page'>
       <h1 className="my-4">Carrinho de Compras</h1>
       <Row>
         <Col md={8}>

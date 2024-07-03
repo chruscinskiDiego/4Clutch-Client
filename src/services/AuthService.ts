@@ -5,6 +5,7 @@ const signup = async(user: IUserSignup) => {
     let response;
     try{
         response = await api.post("http://localhost:8025/users", user); 
+        
     }
     catch(error:any){
         response = error.response;
@@ -20,6 +21,7 @@ const login = async(user: IUserLogin) => {
         localStorage.setItem("token", JSON.stringify(response.data.token));
 
         api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+        localStorage.setItem("userName", user.username);
     }
     catch(error:any){
         response = error.response;
