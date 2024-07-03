@@ -10,7 +10,6 @@ import ShotgunPage from "../../pages/ShotgunPage";
 import MachineGunPage from "../../pages/MachineGunPage";
 import RiflePage from "../../pages/RiflePage";
 import SniperPage from "../../pages/SniperPage";
-import GlovePage from "../../pages/KnifePage";
 import KnifePage from "../../pages/KnifePage";
 
 export function BaseRoutes() {
@@ -21,18 +20,21 @@ export function BaseRoutes() {
 
                 <Route path="/signup" element = {<UserSignupPage/>}/>
                 <Route path="/login" element = {<LoginPage/>}/>
+                <Route path="/produtos/pistolas" element = {<PistolPage/>}/>                    
+                <Route path="/produtos/submetralhadoras" element = {<SubPage/>}/>                    
+                <Route path="/produtos/espingardas" element = {<ShotgunPage/>}/>                    
+                <Route path="/produtos/metralhadoras" element = {<MachineGunPage/>}/>                    
+                <Route path="/produtos/rifles" element = {<RiflePage/>}/>                    
+                <Route path="/produtos/snipers" element = {<SniperPage/>}/>                    
+                <Route path="/produtos/facas" element = {<KnifePage/>}/>
+                <Route path = "/" element = {<HomePage/>}/>
+                <Route path = "/home" element = {<HomePage/>}/>
+                
                 {/*Rotas privadas: */}
-                <Route element = {<AuthenticatedRoutes/>}>
-                    <Route path="/produtos/pistolas" element = {<PistolPage/>}/>                    
-                    <Route path="/produtos/submetralhadoras" element = {<SubPage/>}/>                    
-                    <Route path="/produtos/espingardas" element = {<ShotgunPage/>}/>                    
-                    <Route path="/produtos/metralhadoras" element = {<MachineGunPage/>}/>                    
-                    <Route path="/produtos/rifles" element = {<RiflePage/>}/>                    
-                    <Route path="/produtos/snipers" element = {<SniperPage/>}/>                    
-                    <Route path="/produtos/facas" element = {<KnifePage/>}/>                                                       
-                    <Route path = "/categories" element = {<CategoryListPage/>}/>
-                    <Route path = "/" element = {<HomePage/>}/>
-                    <Route path = "/home" element = {<HomePage/>}/>
+
+                <Route element = {<AuthenticatedRoutes/>}>                                            
+                <Route path = "/categories" element = {<CategoryListPage/>}/>
+                    
                 </Route>
                 
 

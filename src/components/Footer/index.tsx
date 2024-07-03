@@ -5,7 +5,7 @@ import './style.css';  // Estilos específicos podem ser adicionados aqui
 
 export function Footer() {
   return (
-    <footer className="footer mt-auto py-3 bg-light fixed-bottom">
+    <footer className="footer mt-auto py-3 bg-light">
       <Container>
         <Row className="align-items-center justify-content-center">
           <Col xs="auto" className="d-flex align-items-center">
