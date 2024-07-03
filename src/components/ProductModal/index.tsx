@@ -1,11 +1,20 @@
 import { Modal, Button } from 'react-bootstrap';
 import { IProduct } from '../../commons/interface';
 import './style.css'
+import Swal from 'sweetalert2';
 
 interface IProductModalProps {
   show: boolean;
   onHide: () => void;
   product: IProduct | null;
+}
+
+const cartAdded = () => {
+  Swal.fire({
+    title:"Sucesso",
+    text:"Produto adicionado ao carrinho!",
+    icon: "success"
+});
 }
 
 const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
@@ -14,7 +23,8 @@ const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
   const addToCart = (product: IProduct) => {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart)); 
+    cartAdded();
   };
 
   return (
