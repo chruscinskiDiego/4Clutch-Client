@@ -1,0 +1,16 @@
+.order-card{
+    background-color: rgba(0, 0, 0, 0.034);
+    border-radius: 10px;
+    height: 50%;
+}
+
+.order-button{
+    background: linear-gradient(to right, #077ad1, #00bfff);
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.order-button:hover{
+    transform: scale(1.1);
+}

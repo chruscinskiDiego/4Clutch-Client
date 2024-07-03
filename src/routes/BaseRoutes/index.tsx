@@ -11,6 +11,7 @@ import MachineGunPage from "../../pages/MachineGunPage";
 import RiflePage from "../../pages/RiflePage";
 import SniperPage from "../../pages/SniperPage";
 import KnifePage from "../../pages/KnifePage";
+import CartPage from "../../pages/CartPage";
 
 export function BaseRoutes() {
     return(
@@ -29,7 +30,7 @@ export function BaseRoutes() {
                 <Route path ="/produtos/facas" element = {<KnifePage/>}/>
                 <Route path = "/" element = {<HomePage/>}/>
                 <Route path = "/home" element = {<HomePage/>}/>
-                <Route path = "/carrinho" element = {<HomePage/>}/>
+                <Route path = "/carrinho" element = {<CartPage/>}/>
                 
                 {/*Rotas privadas: */}
 

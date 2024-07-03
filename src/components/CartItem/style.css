@@ -1,0 +1,16 @@
+.cart-card{
+    background: linear-gradient(to right, #077ad1, #00bfff);
+}
+
+.remove-button {
+    border: none;
+    background-color: black;
+    transition: transform 0.3s ease;
+}
+
+.remove-button:hover {
+    font-weight: bold;
+    border: none;
+    background-color: black;
+    transform: scale(1.1);
+}

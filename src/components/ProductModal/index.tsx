@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { IProduct } from '../../commons/interface';
 
@@ -10,6 +9,12 @@ interface IProductModalProps {
 
 const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
   if (!product) return null;
+
+  const addToCart = (product: IProduct) => {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
 
   return (
     <Modal show={show} onHide={onHide} centered className="custom-modal">
@@ -26,7 +31,9 @@ const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
         <Button variant="secondary" onClick={onHide}>
           Fechar
         </Button>
-        <Button variant="primary">Adicionar ao Carrinho</Button>
+        <Button variant="primary" onClick={() => { addToCart(product); onHide(); }}>
+          Adicionar ao Carrinho
+        </Button>
       </Modal.Footer>
     </Modal>
   );
