@@ -45,6 +45,7 @@ const isAuthenticated = () : boolean => {
 const logout = () => {
 
     localStorage.removeItem("token");
+    localStorage.removeItem("userName");
 
     api.defaults.headers.common["Authorization"] = "";
 }

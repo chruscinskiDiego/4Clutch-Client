@@ -4,6 +4,8 @@ import CartItem from '../CartItem';
 import { IProduct } from '../../commons/interface';
 import './style.css';
 import { Link } from 'react-router-dom';
+import AuthService from '../../services/AuthService';
+import Swal from 'sweetalert2';
 
 function Cart() {
   const [cart, setCart] = useState<IProduct[]>([]);
@@ -45,6 +47,14 @@ function Cart() {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
+  const noLoggedOrder = () => {
+    Swal.fire({
+      title:"Atenção!",
+      text:"Realize o LOGIN para finalizar sua compra!",
+      icon:"alert",
+    });
+  }
+
   return (
     <Container className='cart-page'>
       <h1 className="my-4">Carrinho de Compras</h1>
@@ -81,7 +91,12 @@ function Cart() {
               </ul>
               <hr />
               <p><strong>Total:</strong> R$ {getTotalPrice()}</p>
-              <Button as={Link} to="/pedido" block className='order-button'>Finalizar Pedido</Button>
+              {AuthService.isAuthenticated() ? (
+                <Button as={Link} to="/pedido" block className='order-button'>Finalizar Pedido</Button>
+              ):(
+                <Button as={Link} to="/login" block className='order-button' onClick={noLoggedOrder}>Finalizar Pedido</Button>
+              )}
+              
             </div>
           </Col>
         )}
