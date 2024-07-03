@@ -14,7 +14,15 @@ const cartAdded = () => {
     title:"Sucesso",
     text:"Produto adicionado ao carrinho!",
     icon: "success"
-});
+  });
+}
+
+const cartExists = () => {
+  Swal.fire({
+    title:"Atenção",
+    text:"Este produto já foi adicionado ao carrinho!",
+    icon: "warning"
+  });
 }
 
 const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
@@ -22,9 +30,15 @@ const ProductModal = ({ show, onHide, product }: IProductModalProps) => {
 
   const addToCart = (product: IProduct) => {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart)); 
-    cartAdded();
+    const productExists = cart.some((item: IProduct) => item.id === product.id);
+
+    if (productExists) {
+      cartExists();
+    } else {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      cartAdded();
+    }
   };
 
   return (
