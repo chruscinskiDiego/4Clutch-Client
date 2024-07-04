@@ -14,6 +14,7 @@ const signup = async(user: IUserSignup) => {
     return response;
     
 };
+
 const login = async(user: IUserLogin) => {
     let response;
     try{

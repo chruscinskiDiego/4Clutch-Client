@@ -22,7 +22,7 @@ function Order() {
     return order.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
   
-  const cleanCart = () => {
+  const confirmCart = () => {
     localStorage.removeItem('cart');
     setOrder([]);
     Swal.fire({
@@ -73,7 +73,8 @@ function Order() {
               </Form.Control>
             </Form.Group>
 
-            <Button as={Link} to="/home" block className='confirm-button' onClick={cleanCart}>Confirmar</Button>
+            <Button as={Link} to="/home" block className='confirm-button' onClick={confirmCart}>Confirmar</Button>
+            
           </div>
         </Col>
       </Row>
